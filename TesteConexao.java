@@ -8,7 +8,7 @@ public class TesteConexao{
                 //String de conexão
                 "jdbc:mysql://localhost:3306/20221_usjt_psc_sexta_pessoas",
                 "root",
-                "1234"    
+                "11234"    
             );
             System.out.println("Conexão OK!");
             minhaConexao.close();
