@@ -12,7 +12,7 @@ public class Principal {
             try{
                 op = Integer.parseInt(JOptionPane.showInputDialog(menu));
                 switch (op){
-                    case 1:
+                    case 1:{
                         String nome = JOptionPane.showInputDialog("Nome?");
                         String fone = JOptionPane.showInputDialog("Fone?");
                         String email = JOptionPane.showInputDialog("E-mail?");
@@ -20,8 +20,17 @@ public class Principal {
                         p.inserir();
                         JOptionPane.showMessageDialog(null, "Cadastro OK");
                         break;
-                    case 2:
+                    }
+                    case 2:{
+                        String nome = JOptionPane.showInputDialog("Nome?");
+                        String fone = JOptionPane.showInputDialog("Fone?");
+                        String email = JOptionPane.showInputDialog("E-mail?");
+                        int codigo = Integer.parseInt(JOptionPane.showInputDialog("Código?"));
+                        Pessoa p = new Pessoa(codigo, nome, fone, email);
+                        p.atualizar();
+                        JOptionPane.showMessageDialog(null, "Atualização OK");
                         break;
+                    }
                     case 3:
                         break;
                     case 4:

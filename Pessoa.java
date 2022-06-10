@@ -6,7 +6,16 @@ public class Pessoa {
     private String fone;
     private String email;
 
+    public Pessoa(int codigo){
+        this(codigo, null, null, null);
+    }
+
     public Pessoa(String nome, String fone, String email){
+        this(0, nome, fone, email);
+    }
+    
+    public Pessoa (int codigo, String nome, String fone, String email){
+        this.codigo = codigo;
         this.nome = nome;
         this.fone = fone;
         this.email = email;    
@@ -45,6 +54,18 @@ public class Pessoa {
             ps.setInt(4, codigo);
             //5. Executar o comando
             ps.execute();
+        }
+    }
+
+    public void remover() throws Exception{
+        String sql = "DELETE FROM tb_pessoa WHERE cod_pessoa = ?";
+        try(
+            Connection conexao = ConnectionFactory.getConnection();
+            PreparedStatement ps = conexao.prepareStatement(sql);
+        ){
+            ps.setInt(1, codigo);
+            ps.execute();
+
         }
     }
 }
