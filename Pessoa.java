@@ -14,7 +14,7 @@ public class Pessoa {
 
     public void inserir() throws Exception{
         //1. Especificar o comando SQL
-        String sql = "INSERT INTO tb_pessoas (nome, fone, email) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO tb_pessoa (nome, fone, email) VALUES (?, ?, ?)";
         //2. Abrir uma conexão com o SGBD
         Connection conexao = ConnectionFactory.getConnection();
         //3. Por meio da conexão, "preparar o comando"
@@ -28,5 +28,23 @@ public class Pessoa {
         //6. Fechar os recursos
         ps.close();
         conexao.close();
+    }
+
+    public void atualizar () throws Exception{
+        //try-with-resources(a partir do Java 7)
+        //1. Especificar o comando SQL
+        String sql = "UPDATE tb_pessoa SET nome = ?, fone = ?, email = ? WHERE cod_pessoa = ?";
+        try(
+            Connection conexao = ConnectionFactory.getConnection();
+            PreparedStatement ps = conexao.prepareStatement(sql);
+        ){
+            //4. Substituir eventuais placeholders
+            ps.setString(1, nome);
+            ps.setString(2, fone);
+            ps.setString(3, email);
+            ps.setInt(4, codigo);
+            //5. Executar o comando
+            ps.execute();
+        }
     }
 }

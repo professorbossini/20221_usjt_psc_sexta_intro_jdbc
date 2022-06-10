@@ -7,7 +7,7 @@ public class Principal {
         //3. Remover uma pessoa
         //4. Listar todas as pessoas
         String menu = "1-Cadastrar\n2-Atualizar\n3-Remover\n4-Listar\n0-Sair";
-        int op;
+        int op = -1;
         do{
             try{
                 op = Integer.parseInt(JOptionPane.showInputDialog(menu));
@@ -18,6 +18,7 @@ public class Principal {
                         String email = JOptionPane.showInputDialog("E-mail?");
                         Pessoa p = new Pessoa(nome, fone, email);
                         p.inserir();
+                        JOptionPane.showMessageDialog(null, "Cadastro OK");
                         break;
                     case 2:
                         break;
@@ -32,6 +33,7 @@ public class Principal {
                 }
             }
             catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Falha técnica. Tente novamente mais tarde");
                 e.printStackTrace();
             }
         }while (op != 0);
